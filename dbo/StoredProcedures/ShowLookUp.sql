@@ -3,11 +3,11 @@
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE ShowLookUp 
+CREATE PROCEDURE [dbo].[ShowLookUp] 
 AS
 BEGIN
-	SELECT * FROM [dbo].[StatusLookup]
-	SELECT * FROM [dbo].[InterviewTypeLookup]
+	SELECT * FROM Jobs.[StatusLookup]
+	SELECT * FROM Interview.[InterviewTypeLookup]
 END
 
 GO

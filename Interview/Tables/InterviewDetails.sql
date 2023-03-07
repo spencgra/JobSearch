@@ -30,7 +30,7 @@ BEGIN
     SELECT @JID = JobID from inserted
 
 
-	INSERT INTO [dbo].[JobSearchHistory]
+	INSERT INTO Jobs.[JobSearchHistory]
 			   ([JobID]
 			   ,[Status]
 			   ,[StatusDate]

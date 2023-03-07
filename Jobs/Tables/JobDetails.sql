@@ -8,22 +8,21 @@ CREATE TABLE [Jobs].[JobDetails] (
     [ClosingDate]   DATE           NULL,
     [ContactName]   NVARCHAR (50)  NULL,
     [ContactNumber] NVARCHAR (50)  NULL,
-    [AddedToUC]     BIT            CONSTRAINT [DF_JobDetails_AddedToUC] DEFAULT ((0)) NULL,
-    CONSTRAINT [PK_JobDetails] PRIMARY KEY CLUSTERED ([JobID] ASC)
+    [AddedToUC]     BIT            NULL
 );
 
 
 GO
 
 
-CREATE TRIGGER [Jobs].NewJobAdded ON [Jobs].[JobDetails]
+CREATE TRIGGER [Jobs].[NewJobAdded] ON [Jobs].[JobDetails]
 	AFTER INSERT
 AS 
 	declare @JID int  
     SET NOCOUNT ON;  
     SELECT @JID = JobID from inserted  
 
-	INSERT INTO [dbo].[JobSearchHistory]
+	INSERT INTO Jobs.[JobSearchHistory]
 			   ([JobID]
 			   ,[Status]
 			   ,[StatusDate]
